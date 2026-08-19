@@ -63,23 +63,6 @@ export const projects = [
     caseStudy: "",
   },
   {
-    id: "mistral-finetune",
-    icon: "◆",
-    name: "Mistral Fine-Tuning",
-    tag: "LLM Fine-Tuning",
-    date: "2026",
-    description:
-      "End-to-end Mistral-7B fine-tuning pipeline using QLoRA and PEFT with 4-bit NF4 quantization, trained on an RTX 4500 Ada (24GB).",
-    highlights: [
-      "4-bit NF4 double quantization to fit a 7B model comfortably on a single GPU",
-      "LoRA adapters applied across attention and MLP projection layers",
-    ],
-    stat: { value: "4-bit", label: "NF4 quant" },
-    stack: ["Mistral-7B", "QLoRA", "PEFT", "PyTorch"],
-    github: "https://github.com/ksvikhyath/Mistral_fine",
-    caseStudy: "",
-  },
-  {
     id: "distributed-pipeline",
     icon: "▲",
     name: "Real-Time Distributed Image Processing",
@@ -95,6 +78,24 @@ export const projects = [
     stack: ["Kafka", "Spark", "ZeroTier"],
     github: "",
     caseStudy: "",
+  },
+  {
+    id: "skillgraph",
+    icon: "⌗",
+    name: "SkillGraph",
+    tag: "Developer Skill Intelligence & Job Matching Platform",
+    date: "2026",
+    description:
+      "Paste a resume and a job post — SkillGraph checks what you claim against what your GitHub actually shows, scores the match, ranks the highest-impact gaps, and recommends one project sized to close them. No accounts, no database, each analysis is a single stateless request.",
+    highlights: [
+      "Deterministic skill extraction and scoring engine (keyword/alias matching, weighted by where each requirement appears in the job post) — no external calls needed to run",
+      "Pulls public GitHub evidence (languages, Dockerfiles, CI configs, tests) to verify resume claims instead of taking them at face value",
+      "Optional Gemini integration writes the roadmap's project description; falls back to built-in templates without an API key",
+    ],
+    stat: { value: "Stateless", label: "no DB" },
+    stack: ["Next.js 14", "TypeScript", "Tailwind", "Gemini API"],
+    github: "https://github.com/ksvikhyath/skillgraph",
+    caseStudy: "https://skillgraph-phi.vercel.app",
   },
 ];
 
