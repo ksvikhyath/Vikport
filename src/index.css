@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+@theme {
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-sans: "IBM Plex Sans", ui-sans-serif, sans-serif;
+
+  --color-ink: #f4efe3;
+  --color-surface: #ece3cd;
+  --color-surface-raised: #fbf8f0;
+  --color-line: #d9cba9;
+  --color-line-soft: #e6dcc0;
+  --color-text: #221e17;
+  --color-text-muted: #5c5546;
+  --color-text-faint: #93876c;
+  --color-amber: #b8631e;
+  --color-amber-dim: #c98a4d;
+  --color-teal: #0f7a68;
+
+  /* the terminal window keeps its own dark palette regardless of page theme */
+  --color-term-bg: #17130f;
+  --color-term-line: #2e281f;
+  --color-term-text: #ede6d6;
+  --color-term-text-muted: #a79c89;
+  --color-term-amber: #f2a93b;
+  --color-term-teal: #5fe0c0;
+}
+
+@layer base {
+  * {
+    scrollbar-color: var(--color-line) var(--color-ink);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  body {
+    background-color: var(--color-ink);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: var(--color-amber);
+    color: #fff8ec;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-amber);
+    outline-offset: 3px;
+  }
+}
+
+@layer utilities {
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+
+  .text-glow {
+    text-shadow: 0 0 24px rgba(242, 169, 59, 0.25);
+  }
+}
+
+@keyframes blink-cursor {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+.cursor-blink {
+  animation: blink-cursor 1s steps(1) infinite;
+}
+
+@keyframes draw-edge {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
+}
+.edge-draw {
+  stroke-dasharray: 1 1;
+  pathLength: 1;
+  animation: draw-edge 1.8s ease-out forwards;
+}
+
+@keyframes node-pulse {
+  0%, 100% { opacity: 0.35; r: 3; }
+  50% { opacity: 1; r: 4.5; }
+}
+.node-pulse {
+  animation: node-pulse 3.2s ease-in-out infinite;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-up {
+  animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
